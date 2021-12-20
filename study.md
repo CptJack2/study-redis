@@ -14,5 +14,6 @@ make完后可以make test一下, 但需要安装tcl, 没用过, 先跳过
 
 看一下源码文件结构, src里是实现, deps是依赖, test是测试
 src里面文件组织是真的乱, 都不分个文件夹, 所有模块的都混在一起了
+make之后的产出物也直接是在原地, 应该放到debug/bin下
 
 先看redis教程, 学习redis基本用法,https://www.redis.com.cn/tutorial.html
