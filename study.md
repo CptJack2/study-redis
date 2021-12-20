@@ -8,5 +8,11 @@
 发现jemalloc编译出错, 太多了, 搞不过来
 直接make MALLOC=libc noopt, 先不使用jemalloc, 成功后会产生所有调试信息
 
+make完后可以make test一下, 但需要安装tcl, 没用过, 先跳过
+
 为了在clion里面使用code inspection, 先照着src/Makefile和src/Makefile.dep写一个简单的Cmakelists.txt(这货跟其他的jetbrains ide比起来真是拉胯)
 
+看一下源码文件结构, src里是实现, deps是依赖, test是测试
+src里面文件组织是真的乱, 都不分个文件夹, 所有模块的都混在一起了
+
+先看redis教程, 学习redis基本用法,https://www.redis.com.cn/tutorial.html
