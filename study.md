@@ -11,6 +11,19 @@
 make完后可以make test一下, 但需要安装tcl, 没用过, 先跳过
 
 为了在clion里面使用code inspection, 先照着src/Makefile和src/Makefile.dep写一个简单的Cmakelists.txt(这货跟其他的jetbrains ide比起来真是拉胯)
+一点小技巧:
+先将Makefile.dep里ctrl+f查找"\"换行符, ctrl+shift+j选择全部, 将所有换行去除
+查看src/Makefile里, REDIS_SERVER_OBJ的定义, 知道了编译redis-server需要的obj
+在bash里, 令 objs=(adlist.o quicklist.o ...)
+for((i=0;i<${#objs[@]};i++));do cat Makefile.dep |grep ${objs[i]};done>deps.txt
+在Makefile.dep里面grep出各个.o的依赖
+在dep.txt里ctrl+f,勾选正则表达式,输入.+\.o: ,ctrl+shift+j select all occurrence, delete, 
+就可以去掉开头的*.o: , 得到依赖的文件列表了
+这时候为了好看还要每个文件一行
+ctrl+r, 正则替换 ,将" *"替换为"\n"
+然后"^(.*)$"替换为"src/$1"就可以完成操作
+加入CMakelists.txt即可
+
 
 看一下源码文件结构, src里是实现, deps是依赖, test是测试
 src里面文件组织是真的乱, 都不分个文件夹, 所有模块的都混在一起了
