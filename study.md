@@ -1,5 +1,6 @@
 记录分析redis源代码的过程,选用目前最新的6.2版本
 
+#编译redis
 先编译redis, 整个编译过程还是很简单的, 直接根目录make就可以了
 
 打断点的时候发现部分调试符号被optimized out了, 看readme
@@ -8,8 +9,11 @@
 发现jemalloc编译出错, 太多了, 搞不过来
 直接make MALLOC=libc noopt, 先不使用jemalloc, 成功后会产生所有调试信息
 
+产出的二进制直接就在src/下
+
 make完后可以make test一下, 但需要安装tcl, 没用过, 先跳过
 
+#clion中使用code inspection
 为了在clion里面使用code inspection, 先照着src/Makefile和src/Makefile.dep写一个简单的Cmakelists.txt(这货跟其他的jetbrains ide比起来真是拉胯)
 一点小技巧:
 先将Makefile.dep里ctrl+f查找"\"换行符, ctrl+shift+j选择全部, 将所有换行去除
@@ -24,7 +28,7 @@ ctrl+r, 正则替换 ,将" *"替换为"\n"
 然后"^(.*)$"替换为"src/$1"就可以完成操作
 加入CMakelists.txt即可
 
-
+#看源码
 看一下源码文件结构, src里是实现, deps是依赖, test是测试
 src里面文件组织是真的乱, 都不分个文件夹, 所有模块的都混在一起了
 make之后的产出物也直接是在原地, 应该放到debug/bin下
