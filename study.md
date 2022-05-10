@@ -36,3 +36,6 @@ make之后的产出物也直接是在原地, 应该放到debug/bin下
 先看redis教程, 学习redis基本用法,https://www.redis.com.cn/tutorial.html
 
 服务端的主程序在src/servcer.c中
+
+#skiplist
+https://blog.csdn.net/helloworld_ptt/article/details/105801262
