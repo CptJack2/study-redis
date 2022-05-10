@@ -44,3 +44,6 @@ dict用来存储的其实是一个大小2^n的数组,hash出来的值就是数�
 涉及到扩缩容，就有负载因子（dict.used/dict.size，已有节点数/dict可承载大小），server.h:#define HASHTABLE_MAX_LOAD_FACTOR 1.618   /* Maximum hash table load factor. */,最大负载因子。
 #skiplist
 https://blog.csdn.net/helloworld_ptt/article/details/105801262
+
+#re
+自己搞的一个事件库，统一了select、epoll、kqueue的抽象。在主线程内进行IO多路复用，对应的处理函数处理发生的事件。
