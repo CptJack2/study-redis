@@ -37,5 +37,10 @@ make之后的产出物也直接是在原地, 应该放到debug/bin下
 
 服务端的主程序在src/servcer.c中
 
+#redis核心数据结构
+#dict
+其实就是个hash实现的map，hash函数用的murmurhash2（据说）。
+dict用来存储的其实是一个大小2^n的数组,hash出来的值就是数组下标，hash值有冲突的，作为链表插入到最前面。
+涉及到扩缩容，就有负载因子（dict.used/dict.size，已有节点数/dict可承载大小），server.h:#define HASHTABLE_MAX_LOAD_FACTOR 1.618   /* Maximum hash table load factor. */,最大负载因子。
 #skiplist
 https://blog.csdn.net/helloworld_ptt/article/details/105801262
