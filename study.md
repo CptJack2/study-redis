@@ -47,3 +47,22 @@ https://blog.csdn.net/helloworld_ptt/article/details/105801262
 
 #re
 自己搞的一个事件库，统一了select、epoll、kqueue的抽象。在主线程内进行IO多路复用，对应的处理函数处理发生的事件。
+
+#readQueryFromClient
+connect
+#0  readQueryFromClient (conn=0x555697177350) at networking.c:2157
+#1  0x0000555695f4baa2 in callHandler (conn=0x555697177350, handler=0x555695e90b79 <readQueryFromClient>) at connhelpers.h:79
+#2  0x0000555695f4c12e in connSocketEventHandler (el=0x5556970d0ec0, fd=8, clientData=0x555697177350, mask=1) at connection.c:295
+#3  0x0000555695e6e34c in aeProcessEvents (eventLoop=0x5556970d0ec0, flags=27) at ae.c:427
+#4  0x0000555695e6e57a in aeMain (eventLoop=0x5556970d0ec0) at ae.c:487
+#5  0x0000555695e7f96e in main (argc=1, argv=0x7ffd6aedbbc8) at server.c:6401
+
+get key
+#0  readQueryFromClient (conn=0x555697177350) at networking.c:2157
+#1  0x0000555695f4baa2 in callHandler (conn=0x555697177350, handler=0x555695e90b79 <readQueryFromClient>) at connhelpers.h:79
+#2  0x0000555695f4c12e in connSocketEventHandler ( el=0x5556970d0ec0, fd=8, clientData=0x555697177350, mask=1) at connection.c:295
+#3  0x0000555695e6e34c in aeProcessEvents ( eventLoop=0x5556970d0ec0, flags=27) at ae.c:427
+#4  0x0000555695e6e57a in aeMain (eventLoop=0x5556970d0ec0) at ae.c:487
+#5  0x0000555695e7f96e in main (argc=1, argv=0x7ffd6aedbbc8) at server.c:6401
+
+#sendReplyToClient acceptTcpHandler 
